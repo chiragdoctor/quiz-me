@@ -13,7 +13,7 @@ type LayoutProps = {
 
 const Layout = ({ title, keywords, description, children }: LayoutProps) => {
     return (
-        <div className="flex min-h-screen flex-col items-center justify-center py-2">
+        <div className="flex flex-col items-center justify-center">
             <Head>
                 <title>{title}</title>
                 <meta name='keywords' content={keywords} />
