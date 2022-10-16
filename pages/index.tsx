@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import Button from '../components/Button'
 import HeroImage from '../components/HeroImage'
 import Layout from '../components/Layout'
 
@@ -11,6 +12,9 @@ const Home: NextPage = () => {
           <div className='font-roboto font-light text-4xl leading-tight tracking-wide'>new concepts</div>
           <div className='font-roboto font-light text-4xl leading-tight tracking-wide'>for each question</div>
           <div className='font-roboto font-extralight text-sm leading-tight tracking-wide mt-12'><span className='mr-4 text-xl'>| </span> We help you prepare for exams and quizes </div>
+          <div className="mt-10 content-start">
+            <Button text='Start Solving' handleOnClick={() => console.log('button clicked!!')} />
+          </div>
         </div>
         <div className='w-1/2'>
           <HeroImage />
