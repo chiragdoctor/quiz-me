@@ -12,7 +12,7 @@ const Home: NextPage = () => {
   }
   return (
     <Layout title='Quiz Me' description='This is a quiz app' keywords='quiz general knowledge'>
-      <main className='flex mt-10 gap-4 content-center'>
+      <main className='container flex flex-row justify-evenly content-center mx-auto'>
         <div className='w-1/2 mt-10'>
           <div className='font-roboto font-light text-4xl leading-tight tracking-wide'>Learn  </div>
           <div className='font-roboto font-light text-4xl leading-tight tracking-wide'>new concepts</div>
