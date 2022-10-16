@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import Button from '../../components/Button'
 import Category from '../../components/Category'
 import Layout from '../../components/Layout'
+import { API_URL } from '../../config'
 
 type CategoriesProps = {
     categories: string[]
@@ -60,7 +61,12 @@ const Categories = ({ categories }: CategoriesProps) => {
 
 
 export async function getServerSideProps() {
-    const categories = ['General Knowledge', 'Entertainment: Film', 'Sports', 'Politics', 'Entertainment: Books']
+    console.log('API_URL :>> ', `${API_URL}/categories`);
+    const res = await fetch(`${API_URL}/categories`)
+    const data = await res.json()
+
+    const categories = data.data.map((d: any) => d.attributes.name)
+
 
     return {
         props: { categories },

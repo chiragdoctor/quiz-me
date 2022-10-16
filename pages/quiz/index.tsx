@@ -1,9 +1,11 @@
+import qs from 'qs';
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Button from '../../components/Button';
 import Layout from '../../components/Layout'
 import Option from '../../components/Options';
 import Question from '../../components/Question';
+import { API_URL, PER_PAGE } from '../../config';
 
 type QuizProps = {
     questions: {
@@ -52,9 +54,6 @@ const Quiz = ({ questions, categories }: QuizProps) => {
         setSelectedOption(option);
     }
 
-
-
-
     const handleNextClick = () => {
         if (currentQuestion === questions.length - 1) {
             console.log('done')
@@ -69,7 +68,6 @@ const Quiz = ({ questions, categories }: QuizProps) => {
         setCurrentQuestion(currentQuestion - 1)
     }
 
-    console.log('answers', answers)
     return (
         <Layout title='Start Quiz' description='This is a quiz app' keywords='quiz general knowledge'>
             <div key={currentQuestion}>
@@ -92,18 +90,32 @@ const Quiz = ({ questions, categories }: QuizProps) => {
 
 
 export async function getServerSideProps({ query }: any) {
-    console.log('query', query)
     const categories = query.categories.split(',')
-    // fetch questions from api based on categories
 
 
-    const questions = [{ question: 'An interface design application that runs in the browser with team-based collaborative design projects?', correctOption: 'Figma', options: ['Figma', 'Adobe XP', 'Sketch', 'Invasion'] },
-    { question: 'In which Italian city can you find the Colosseum?', correctOption: 'Rome', options: ['Venice', 'Rome', 'Milan', 'Naples'] },
-    {
-        question: 'What is the capital of India?',
-        correctOption: 'New Delhi',
-        options: ['New Delhi', 'Mumbai', 'Kolkata', 'Chennai']
-    }]
+    const data = []
+
+    if (categories.length >= 1) {
+        for (let i = 0; i < categories.length; i++) {
+            const res = await fetch(`${API_URL}/questions?filters[category][$eq]=${categories[i]}`)
+            const { data: newData } = await res.json()
+            data.push(...newData)
+        }
+    }
+
+
+    console.log('data :>> ', data);
+    const questions = data.map((question: any) => {
+        const { attributes } = question;
+        return {
+            question: attributes.question,
+            correctOption: attributes.correct_answer,
+            options: attributes.options.split(',')
+        }
+    })
+
+    console.log('questions :>> ', questions.length);
+
     return {
         props: { questions, categories },
     }
