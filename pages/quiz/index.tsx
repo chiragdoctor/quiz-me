@@ -10,14 +10,15 @@ type QuizProps = {
         question: string;
         correctOption: string;
         options: string[];
-    }[]
+    }[];
+    categories: string[]
 }
 
 type Answer = {
     [key: number]: string
 }
 
-const Quiz = ({ questions }: QuizProps) => {
+const Quiz = ({ questions, categories }: QuizProps) => {
     const router = useRouter();
     const [selectedOption, setSelectedOption] = useState<string[]>([])
     const [currentQuestion, setCurrentQuestion] = useState<number>(0)
@@ -58,7 +59,7 @@ const Quiz = ({ questions }: QuizProps) => {
         if (currentQuestion === questions.length - 1) {
             console.log('done')
             const answersArray = Object.values(answers);
-            router.push('/result?answers=' + answersArray.join(','))
+            router.push(`/result?answers=${answersArray.join(',')}&categories=${categories.join(',')}`)
         }
     }
 
@@ -102,7 +103,7 @@ export async function getServerSideProps({ query }: any) {
         options: ['New Delhi', 'Mumbai', 'Kolkata', 'Chennai']
     }]
     return {
-        props: { questions },
+        props: { questions, categories },
     }
 }
 
