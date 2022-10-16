@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    @font-face {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 100 900;
+        font-display: swap;
+        src: url('/fonts/Poppins-Regular.ttf') format('woff2 supports variations'),
+            url('/fonts/Poppins-Regular.ttf') format('woff2-variations');
+    }
+
+    @font-face {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 100 900;
+        font-display: swap;
+        src: url('/fonts/Roboto-Regular.ttf') format('woff2 supports variations'),
+            url('/fonts/Roboto-Regular.ttf') format('woff2-variations');
+    }
+}
