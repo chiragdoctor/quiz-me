@@ -20,7 +20,7 @@ type Answer = {
 
 const Quiz = ({ questions, categories }: QuizProps) => {
     const router = useRouter();
-    const [selectedOption, setSelectedOption] = useState<string[]>([])
+    const [selectedOption, setSelectedOption] = useState('')
     const [currentQuestion, setCurrentQuestion] = useState<number>(0)
     const [answers, setAnswers] = useState<Answer>({})
 
@@ -49,18 +49,20 @@ const Quiz = ({ questions, categories }: QuizProps) => {
         const ans = verifyAnswer(option);
         newAnswers[currentQuestion] = ans;
         setAnswers(newAnswers);
+        setSelectedOption(option);
     }
 
 
 
 
     const handleNextClick = () => {
-        setCurrentQuestion(currentQuestion + 1)
         if (currentQuestion === questions.length - 1) {
             console.log('done')
             const answersArray = Object.values(answers);
             router.push(`/result?answers=${answersArray.join(',')}&categories=${categories.join(',')}`)
+            return
         }
+        setCurrentQuestion(currentQuestion + 1)
     }
 
     const handlePreviousClick = () => {

@@ -22,7 +22,7 @@ const Layout = ({ title, keywords, description, children }: LayoutProps) => {
             </Head>
 
             <Header />
-            <main className='md:container md:mx-auto'>{children}</main>
+            <main className='md:container md:mx-auto mt-10'>{children}</main>
         </div>
     )
 }

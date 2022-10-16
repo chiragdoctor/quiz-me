@@ -1,6 +1,6 @@
 type OptionProps = {
     text: string
-    selectedOption: string[];
+    selectedOption: string;
     handleClick: (option: string) => void;
 }
 

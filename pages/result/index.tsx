@@ -61,11 +61,11 @@ const Result = ({ questions, result }: ResultProps) => {
                 <div className='font-poppins font-bold text-5xl'>{score} / {questions.length}</div>
             </div>
             <div className='flex flex-col justify-center m-20'>
-                <div className='font-poppins text-2xl mb-5'>Feedback:</div>
+                <div className='font-poppins text-2xl'>Feedback:</div>
                 {
                     Object.keys(feedback).length > 0 ? Object.keys(feedback).map((key: any) => {
                         return (
-                            <div className='mb-10' key={key}>
+                            <div className='mb-5' key={key}>
 
                                 <div>Question: {questions[key].question}
                                 </div>
@@ -76,7 +76,7 @@ const Result = ({ questions, result }: ResultProps) => {
                         <div className="flex justify-center font-poppins font-bold text-2xl">You have answered all the questions correctly</div>
 
                 }
-                <div className='m-40 flex justify-end'>
+                <div className='mt-5 flex justify-end'>
                     <Button text='Complete' handleOnClick={handlePlayAgain} />
                 </div>
 
