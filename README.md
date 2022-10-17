@@ -1,34 +1,73 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# QuizMe (Frontend)
 
-## Getting Started
+There are 2 project created for the app to run
 
-First, run the development server:
+1. quiz-me - Frontend project (https://github.com/chiragdoctor/quiz-me)
+2. quiz-me-backend - Backend Strapi CMS Project (https://github.com/chiragdoctor/quiz-me-backend)
+   Clone the frontend project
+
+## To run the project locally
+
+Frontend
+
+1. Clone the project `git clone git@github.com:chiragdoctor/quiz-me.git`
+2. Go in the folder & npm install
+3. Command to run the project
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
+
+Backend
+
+1. Clone the project `git clone git@github.com:chiragdoctor/quiz-me-backend.git`
+2. Go in the folder & npm install
+3. Command to run the project
+
+```bash
+npm run develop
+```
+
+Once the backend os running, we need to create a user (admin user) and start creating data. This step is just for local development, on production the data is already set.
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Production
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Frontend is deployed on Vercel,
+https://quizme-gamma.vercel.app/
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Backend is deployed on Heroku
+https://quizmebackend.herokuapp.com/admin/auth/login
 
-## Learn More
+**Credentials will be provided in the email**
 
-To learn more about Next.js, take a look at the following resources:
+We can use this credentials to create new content
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+I have already setup some content so that we can go through the website
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+# Process
 
-## Deploy on Vercel
+1. Understood the problem statement i.e. requirements
+2. Based on that I have selected the technologies. In our case we have t make a quiz app, it is a good option to have a CMS system in place. I have chosen Strapi CMS as the backend
+3. The frontend of the app uses React, Next.js & Tailwind CSS
+4. Once I had the sorted out the technologies, I had to re-iterate over the problem statement and come up with a mindmap which help me to take a step by step approach to solve the problem. Image attached bellow
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![Mind Map](./public/images/Steps%20for%20Quiz%20App.png)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+5. After that I used this as a reference to get to the solution. This mindmap is just for reference purpose.
+6. Once the solution was developed, I have tested the solution locally.
+7. Then it was deployed to production environment
+   1. CMS - Heroku
+   2. NextJS - Vercel
+8. Again I went thought one round of testing on production
+
+## Enhancements
+
+1. Can Implement all the **CRUD operations** - There was no need at this point in the exercise to implement it. But can be done as extension
+   1. Like registering user
+   2. Making admin panel to store data in CMS
+2. **Authenticating User ** -
+   1. Login functionality
+   2. Role based access
+3. Refactor Tailwind CSS code to be more reusable
